@@ -1,25 +1,104 @@
 <template>
-    <div>
-        <p>Fruit Component</p>
-        <ul>
-            <li v-for="item in list" :key="item.id" style="margin-bottom: 12px; padding: 8px; border-left: 3px solid #42b983; background-color: #f5f5f5;">
-                <strong>Fruit #{{ item.id }}:</strong> {{ item.name }} 
-                <span style="color: #666;">({{ item.color }})</span>
-                <br>
-                <span style="font-size: 0.9em;">Price: ${{ item.price }}</span>
-                <br>
-                <span style="font-size: 0.85em; color: #888;">{{ item.info }}</span>
-            </li>
-        </ul>
+  <div class="fruit-container">
+    <h1 class="page-title">Fruit Information List</h1>
+
+    <div class="fruit-list">
+      <div v-for="fruit in list" :key="fruit.id" class="fruit-item">
+        <h3 class="fruit-name">{{ fruit.name }}</h3>
+        <p class="fruit-type">Color: {{ fruit.color }}</p>
+        <p class="fruit-type">Price: {{ fruit.price }} $</p>
+        <p class="fruit-brief">{{ fruit.info }}</p>
+      </div>
     </div>
+  </div>
 </template>
+
 <script setup>
-    import { reactive } from "vue";
-    const list = reactive([
-        { id: 1, name: "Apple", color: "Red", price: 3 , info: "Apples are nutritious fruits that come in various colors including red, green, and yellow. They are rich in fiber and vitamin C."},
-        { id: 2, name: "Banana", color: "Yellow", price: 1 , info: "Bananas are elongated, yellow fruits known for their sweet taste and high potassium content. They are a popular snack and ingredient in smoothies."},
-        { id: 3, name: "Grapes", color: "Purple", price: 2 , info: "Grapes are small, round fruits that grow in clusters on vines. They can be eaten fresh or used to make wine, juice, and raisins."},
-        { id: 4, name: "Orange", color: "Orange", price: 2.5 , info: "Oranges are citrus fruits known for their bright orange color and tangy flavor. They are an excellent source of vitamin C and are often consumed as juice or eaten fresh."},
-        { id: 5, name: "Strawberry", color: "Red", price: 4 , info: "Strawberries are small, red fruits with a sweet and slightly tart flavor. They are rich in antioxidants and vitamin C, making them a healthy treat."}
-    ]);
+import { ref } from "vue";
+
+const list = ref([
+  {
+    id: 1,
+    name: "Apple",
+    color: "Red",
+    price: 3,
+    info: "Apples are nutritious fruits rich in fiber and vitamin C.",
+  },
+  {
+    id: 2,
+    name: "Banana",
+    color: "Yellow",
+    price: 1,
+    info: "Bananas are sweet fruits high in potassium.",
+  },
+  {
+    id: 3,
+    name: "Grapes",
+    color: "Purple",
+    price: 2,
+    info: "Grapes grow in clusters and are used to make wine and juice.",
+  },
+  {
+    id: 4,
+    name: "Orange",
+    color: "Orange",
+    price: 2.5,
+    info: "Oranges are citrus fruits rich in vitamin C.",
+  },
+  {
+    id: 5,
+    name: "Strawberry",
+    color: "Red",
+    price: 4,
+    info: "Strawberries are antioxidant-rich sweet red fruits.",
+  },
+]);
 </script>
+
+<style scoped>
+.fruit-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Microsoft YaHei", sans-serif;
+  color: #333;
+}
+
+.page-title {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.fruit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fruit-item {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 15px;
+  transition: all 0.2s ease-in-out;
+}
+
+.fruit-item:hover {
+  border-color: #adb5bd;
+  background-color: #e9ecef;
+}
+
+.fruit-name {
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+.fruit-type {
+  color: #6c757d;
+  font-size: 0.9em;
+}
+
+.fruit-brief {
+  color: #495057;
+}
+</style>
