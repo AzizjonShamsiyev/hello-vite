@@ -2,12 +2,13 @@
     <div>
         <p>Fruit Component</p>
         <ul>
-            <li v-for="item in list" :key="item.id">
-                FruitNumber : {{ item.id }}, 
-                FruitName : {{ item.name }}, 
-                FruitColor : {{ item.color }},
-                FruitPrice : {{ item.price }},
-                FruitInfo : {{ item.info}} 
+            <li v-for="item in list" :key="item.id" style="margin-bottom: 12px; padding: 8px; border-left: 3px solid #42b983; background-color: #f5f5f5;">
+                <strong>Fruit #{{ item.id }}:</strong> {{ item.name }} 
+                <span style="color: #666;">({{ item.color }})</span>
+                <br>
+                <span style="font-size: 0.9em;">Price: ${{ item.price }}</span>
+                <br>
+                <span style="font-size: 0.85em; color: #888;">{{ item.info }}</span>
             </li>
         </ul>
     </div>
